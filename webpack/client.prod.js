@@ -12,14 +12,14 @@ process.noDeprecation = true;
 
 const config = {
   path: `ssr/${childProcess.execSync('git rev-parse HEAD').toString().replace(/\n/, '')}`,
-  cdn: 'http://opeq3tea1.bkt.clouddn.com/',
+  cdn: 'http://cdn.com/',
 };
 
 // 这里配置 Plugin
 const qiniuPlugin = new QiniuPlugin({
-  ACCESS_KEY: 'Tor2L7aBu0znCFOhe1KE-czP3yng0hkVN--Cj33Q',
-  SECRET_KEY: 'iOxZi0M4kSZoLu5oibf95oHiiC7bfjafSawnik2Z',
-  bucket: 'share-xinpinget',
+  ACCESS_KEY: 'xxx',
+  SECRET_KEY: 'xxx',
+  bucket: 'bucket-name',
   path: config.path,
   include: [/(\.js|\.map)$/],
 });
@@ -97,7 +97,6 @@ const clientWebpackConfig = {
       },
     }),
     new LoadablePlugin(),
-    // new webpack.optimize.AggressiveMergingPlugin(),
     new UglifyJsPlugin({
       sourceMap: true,
       parallel: 4,
