@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%= title %></title>
+  <meta name="format-detection" content="telephone=no" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" name="viewport">
+  <!-- <meta name="apple-itunes-app" content="app-id=1070842761, affiliate-data=myAffiliateData, app-argument=myURL"> -->
+  <style>
+    body {margin: 0;}
+    * {font-family: 'PingFang SC','SF UI DISPLAY','Hiragino Sans GB','Source Han Sans CN','Source Han Sans SC','Microsoft YaHei','ST Heiti','SimHei';outline: none;box-sizing: border-box;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+    a {text-decoration: none;}
+    #app {max-width: 600px;margin: auto;font-size: 0.16rem;}
+  </style>
+  <% if(css) { %>
+    <%- `<style>${css}</style>` %>
+  <% } %>
+  <%- style %>
+  <script type='text/javascript'>
+    // 设置rem字号
+    ;(function() {
+      var docEl = document.documentElement;
+      var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+      var setRem = function() {
+        var screenWidth = docEl.clientWidth || window.screen.width || 375;
+        screenWidth = screenWidth > 600 ? 600 : screenWidth;
+        docEl.style.fontSize = (100 * screenWidth / 375) / 10 + 'px';
+      };
+      // 屏幕大小变化后重新设置rem字号
+      window.addEventListener(resize, setRem, false);
+      setRem();
+    })();
+  </script>
+</head>
+<body>
+  <div id="app"><%- body %></div>
+  <%- `<script type="text/javascript">window.__INITIAL_DATA__ = ${JSON.stringify(initialData)};</script>` %>
+  <%- script %>
+</body>
+</html>
